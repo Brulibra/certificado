@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Certificado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="moldura">
+    <header>
+      <p class="instituicao">Centro Espírita João Silva</p>
+      <p class="departamento">Departamento de Ensino<br>Escola de Estudo da Doutrina Espírita</p>
+    </header>
+    <h1>Certificado</h1>
+
+    <form id="formulario">
+      <span class="rotulo">Nome do Curso</span>
+      <div id="cursos"></div>
+      <button type="button" id="adicionar">Adicionar outro curso</button>
+
+      <label>Nome do Aluno <input type="text" id="aluno" class="t14" required></label>
+      <label>Nome do Professor <input type="text" id="professor" class="t12" required></label>
+      <label>Nome do Presidente <input type="text" id="presidente" class="t12" required></label>
+      <label>Nome do Dirigente <input type="text" id="dirigente" class="t12" required></label>
+
+      <span class="rotulo">Data (São Paulo)</span>
+      <div class="data-linha">
+        <label>Dia <input type="number" id="dia" class="t14" min="1" max="31" required></label>
+        <label>Mês
+          <select id="mes" class="t14" required>
+            <option value="">Selecione</option>
+            <option>Janeiro</option><option>Fevereiro</option><option>Março</option>
+            <option>Abril</option><option>Maio</option><option>Junho</option>
+            <option>Julho</option><option>Agosto</option><option>Setembro</option>
+            <option>Outubro</option><option>Novembro</option><option>Dezembro</option>
+          </select>
+        </label>
+        <label>Ano <input type="number" id="ano" class="t14" min="2000" max="2099" placeholder="2026" required></label>
+      </div>
+
+      <button type="submit" class="principal">Baixar PDF</button>
+      <p id="erro" role="alert"></p>
+    </form>
+  </main>
+
+  <!-- Ordem importa: jsPDF → assets.js → script.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="assets.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
