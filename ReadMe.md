@@ -1,6 +1,6 @@
 # Gerador de Certificados em PDF
 
-Site simples, feito com HTML, CSS e JavaScript puro, que permite preencher um formulário e baixar um **certificado em PDF** direto do navegador, sem servidor e sem instalação. O PDF é gerado com a biblioteca [jsPDF](https://github.com/parallax/jsPDF).
+Site simples, feito com HTML, CSS e JavaScript puro, que permite preencher um formulário e baixar um **certificado em PDF** direto do navegador, sem servidor e sem instalação. O certificado é desenhado em **HTML e CSS** e convertido em PDF com [html2canvas](https://html2canvas.hertzen.com/) e [jsPDF](https://github.com/parallax/jsPDF).
 
 O layout do certificado segue os modelos do **Centro Espírita João Silva** (Departamento de Ensino).
 
@@ -8,10 +8,10 @@ O layout do certificado segue os modelos do **Centro Espírita João Silva** (De
 
 - Formulário com nome do curso, aluno, professor, presidente, dirigente e data.
 - Botão **Adicionar outro curso** para incluir mais cursos no mesmo certificado (e **Remover** para tirar uma linha).
-- Escolha automática do modelo: um modelo para **um curso** e outro para **vários cursos**.
+- Texto do certificado montado automaticamente: `Conferido a {aluno} pela conclusão do Curso de {curso}` ou, com vários, `dos Cursos de {cursos}`.
 - Lista de cursos escrita de forma natural: `Filosofia e Artes` ou `Filosofia, Direito e Artes`.
 - Data no formato `São Paulo, 05 de Outubro de 2026`, com dia, mês (por extenso) e ano preenchidos pela pessoa.
-- Ajuste automático do tamanho da letra quando um nome ou lista é longo demais para a caixa do modelo.
+- Texto corrido e responsivo: ele ocupa só o espaço de que precisa, sem caixas de tamanho fixo. A letra só diminui se o texto for muito longo.
 - Formulário limpo automaticamente depois de cada download, pronto para o próximo certificado.
 
 ## Estrutura do projeto
@@ -21,19 +21,21 @@ certificado/
 ├── index.html   # Estrutura da página
 ├── style.css    # Estilo da página
 ├── script.js    # Lógica do formulário e geração do PDF
-├── assets.js    # Imagens de fundo do certificado (base64)
+├── assets.js    # Logo e ornamento do certificado (base64)
+├── Fonts/       # Fontes locais: Abril Fatface e Open Sans
 └── README.md
 ```
 
 O `index.html` carrega os scripts nesta ordem, que **não deve ser alterada**:
 
 1. jsPDF (via CDN)
-2. `assets.js`
-3. `script.js`
+2. html2canvas (via CDN)
+3. `assets.js`
+4. `script.js`
 
 ## Como usar
 
-1. Mantenha os quatro arquivos (`index.html`, `style.css`, `script.js` e `assets.js`) na mesma pasta.
+1. Mantenha os quatro arquivos (`index.html`, `style.css`, `script.js` e `assets.js`) e a pasta `Fonts` juntos, na mesma pasta.
 2. Abra o `index.html` no navegador (um duplo clique basta).
 3. Preencha o formulário.
 4. Clique em **Baixar PDF**. O arquivo `certificado.pdf` será baixado e o formulário ficará vazio.
@@ -41,12 +43,8 @@ O `index.html` carrega os scripts nesta ordem, que **não deve ser alterada**:
 ## Requisitos
 
 - Um navegador atual (Chrome, Edge, Firefox, Opera, etc.).
-- **Conexão com a internet**, usada para carregar:
-  - a biblioteca jsPDF (cdnjs);
-  - a fonte **Open Sans**, embutida no PDF;
-  - as fontes **Abril Fatface** e **Open Sans** da página (Google Fonts).
-
-Se a Open Sans não carregar, o PDF ainda é gerado, com uma fonte padrão, e a página mostra um aviso.
+- **Conexão com a internet**, usada só para carregar as bibliotecas jsPDF e html2canvas (cdnjs).
+- As fontes **Abril Fatface** e **Open Sans** vêm da pasta `Fonts`, sem baixar nada da internet.
 
 ## Tipografia do certificado
 
@@ -59,7 +57,7 @@ Se a Open Sans não carregar, o PDF ainda é gerado, com uma fonte padrão, e a 
 | Professor, presidente e dirigente | Open Sans | 12 |
 | Cargos (Presidente, Professor(a), Depto. de Ensino) | Open Sans | 10 |
 
-Os textos fixos (títulos, subtítulos e cargos) já fazem parte das imagens de fundo, em `assets.js`. A Cooper BT é uma fonte paga: na página ela só aparece se estiver instalada no computador, e no PDF isso não afeta nada.
+A Cooper BT é uma fonte paga e não vem da internet: ela só aparece no certificado se estiver instalada no computador. Caso contrário, o navegador usa uma fonte com serifa parecida.
 
 ## Tecnologias
 
