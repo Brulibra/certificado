@@ -1,18 +1,23 @@
-# Gerador de Certificados em PDF
+# Gerador de Certificados Centro Espítita João Silva
 
-Site simples, feito com HTML, CSS e JavaScript puro, que permite preencher um formulário e baixar um **certificado em PDF** direto do navegador, sem servidor e sem instalação. O certificado é desenhado em **HTML e CSS** e convertido em PDF com [html2canvas](https://html2canvas.hertzen.com/) e [jsPDF](https://github.com/parallax/jsPDF).
+Site simples, feito com HTML, CSS e JavaScript puro, que permite preencher um formulário e baixar um **certificado em PDF** direto do navegador, sem servidor e sem instalação. O certificado é desenhado em **HTML e CSS** (com base em design feito no Canva) e convertido em PDF com [html2canvas](https://html2canvas.hertzen.com/) e [jsPDF](https://github.com/parallax/jsPDF).
 
 O layout do certificado segue os modelos do **Centro Espírita João Silva** (Departamento de Ensino).
 
+## Link de Acesso
+
+[Gerador de certificados Centro Espítita João Silva](https://brulibra.github.io/certificado/)
+
 ## Funcionalidades
 
-- Formulário com nome do curso, aluno, professor, presidente, dirigente e data.
+- Formulário com nome do curso, aluno, Professor, Presidente, responsável pelo Departamento de Ensino e data.
 - Botão **Adicionar outro curso** para incluir mais cursos no mesmo certificado (e **Remover** para tirar uma linha).
 - Texto do certificado montado automaticamente: `Conferido a {aluno} pela conclusão do Curso de {curso}` ou, com vários, `dos Cursos de {cursos}`.
-- Lista de cursos escrita de forma natural: `Filosofia e Artes` ou `Filosofia, Direito e Artes`.
+- Lista de cursos escrita de forma natural: `Filosofia e Reforma Íntima` ou `Filosofia, Reforma Íntima e Aprendizes do Evangelho`.
 - Data no formato `São Paulo, 05 de Outubro de 2026`, com dia, mês (por extenso) e ano preenchidos pela pessoa.
 - Texto corrido e responsivo: ele ocupa só o espaço de que precisa, sem caixas de tamanho fixo. A letra só diminui se o texto for muito longo.
 - Formulário limpo automaticamente depois de cada download, pronto para o próximo certificado.
+- Página responsiva, para uso no celular.
 
 ## Estrutura do projeto
 
@@ -51,15 +56,14 @@ O `index.html` carrega os scripts nesta ordem, que **não deve ser alterada**:
 | Elemento | Fonte | Tamanho |
 | --- | --- | --- |
 | Título (Centro Espírita João Silva) | Abril Fatface | 22 |
-| Subtítulos | Cooper BT | 8,5 |
-| "Certificado" | Cooper BT | 42,5 |
+| Subtítulos | Abril Fatface | 8,5 |
+| "Certificado" | Abril Fatface | 42,5 |
 | Aluno, cursos e data | Open Sans | 14 |
 | Professor, presidente e dirigente | Open Sans | 12 |
 | Cargos (Presidente, Professor(a), Depto. de Ensino) | Open Sans | 10 |
-
-A Cooper BT é uma fonte paga e não vem da internet: ela só aparece no certificado se estiver instalada no computador. Caso contrário, o navegador usa uma fonte com serifa parecida.
 
 ## Tecnologias
 
 - HTML, CSS e JavaScript
 - [jsPDF](https://github.com/parallax/jsPDF) 2.5.1
+- [html2canvas](https://html2canvas.hertzen.com/) 1.4.1
