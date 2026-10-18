@@ -54,16 +54,16 @@ header {
   margin: 0;
 }
 .departamento {
-  font-family: "Cooper BT", "Cooper Black", Georgia, serif;
+  font-family: "Abril Fatface", Georgia, serif;
   font-size: 8.5pt;
-  font-weight: bold;
+  font-weight: normal;
   letter-spacing: 0.3em;
   line-height: 1.9;
   text-transform: uppercase;
   margin: 6px 0 0;
 }
 h1 {
-  font-family: "Cooper BT", "Cooper Black", Georgia, serif;
+  font-family: "Abril Fatface", Georgia, serif;
   font-weight: normal;
   font-size: clamp(26pt, 11vw, 42.5pt);
   letter-spacing: 0.06em;
@@ -252,8 +252,7 @@ button.principal {
   text-align: center;
   white-space: nowrap;
   font:
-    bold 8.5pt/14.8pt "Cooper BT",
-    "Cooper Std",
+    normal 8.5pt/14.8pt "Abril Fatface",
     Georgia,
     serif;
   letter-spacing: 0.45em;
@@ -274,8 +273,7 @@ button.principal {
   width: 842.25pt;
   text-align: center;
   font:
-    normal 42.5pt/50pt "Cooper BT",
-    "Cooper Std",
+    normal 42.5pt/50pt "Abril Fatface",
     Georgia,
     serif;
   letter-spacing: 0.04em;
