@@ -5,9 +5,6 @@ const container = document.getElementById("cursos");
 const erro = document.getElementById("erro");
 const certificado = document.getElementById("certificado");
 
-document.getElementById("logo").src = ASSET_LOGO;
-document.getElementById("ornamento").src = ASSET_ORNAMENTO;
-
 // ---------- Linhas de curso do formulário ----------
 function atualizarRemover() {
   const linhas = container.querySelectorAll(".linha-curso");
@@ -43,6 +40,20 @@ function adicionarCurso() {
 
 document.getElementById("adicionar").addEventListener("click", adicionarCurso);
 adicionarCurso();
+
+// ---------- Imagens do certificado (vêm do assets.js) ----------
+// O formulário é montado ANTES desta etapa: se o assets.js não carregar, a página continua funcionando
+// e o erro aparece como aviso, em vez de travar o script inteiro.
+const MSG_ASSETS =
+  "Não foi possível carregar o assets.js (logo e ornamento do certificado). Confira se o arquivo foi enviado junto com os outros.";
+const imagensCarregadas =
+  typeof ASSET_LOGO !== "undefined" && typeof ASSET_ORNAMENTO !== "undefined";
+if (imagensCarregadas) {
+  document.getElementById("logo").src = ASSET_LOGO;
+  document.getElementById("ornamento").src = ASSET_ORNAMENTO;
+} else {
+  erro.textContent = MSG_ASSETS;
+}
 
 // Deixa o formulário vazio (com uma única linha de curso) para o próximo certificado
 function limparFormulario() {
@@ -107,6 +118,11 @@ document
     e.preventDefault();
     erro.textContent = "";
 
+    if (!imagensCarregadas) {
+      erro.textContent = MSG_ASSETS;
+      return;
+    }
+
     if (!window.jspdf || !window.html2canvas) {
       erro.textContent =
         "Não foi possível carregar o jsPDF/html2canvas. Verifique sua conexão com a internet.";
@@ -134,7 +150,8 @@ document
     try {
       await document.fonts.ready; // fontes locais (pasta Fonts) prontas antes de gerar a imagem
       const canvas = await html2canvas(certificado, {
-        scale: 3,
+        scale: window.innerWidth < 600 ? 2 : 3, // celulares têm menos memória
+        windowWidth: 1200, // evita que as regras de tela pequena alterem o certificado
         backgroundColor: "#ffffff",
         logging: false,
         onclone: function (doc) {
