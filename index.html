@@ -1,88 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Certificado</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <main class="moldura">
-    <header>
-      <p class="instituicao">Centro Espírita João Silva</p>
-      <p class="departamento">Departamento de Ensino<br>Escola de Estudo da Doutrina Espírita</p>
-    </header>
-    <h1>Certificado</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Certificado | Centro Espírita João Silva</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="moldura">
+      <header>
+        <p class="instituicao">Centro Espírita João Silva</p>
+        <p class="departamento">
+          Departamento de Ensino<br />Escola de Estudo da Doutrina Espírita
+        </p>
+      </header>
+      <h1>Certificado</h1>
 
-    <form id="formulario">
-      <span class="rotulo">Nome do Curso</span>
-      <div id="cursos"></div>
-      <button type="button" id="adicionar">Adicionar outro curso</button>
+      <form id="formulario">
+        <span class="rotulo">Nome do Curso</span>
+        <div id="cursos"></div>
+        <button type="button" id="adicionar">Adicionar outro curso</button>
 
-      <label>Nome do Aluno <input type="text" id="aluno" class="t14" required></label>
-      <label>Nome do Professor <input type="text" id="professor" class="t12" required></label>
-      <label>Nome do Presidente <input type="text" id="presidente" class="t12" required></label>
-      <label>Nome do Dirigente <input type="text" id="dirigente" class="t12" required></label>
+        <label>Nome do Aluno <input type="text" id="aluno" required /></label>
+        <label
+          >Nome do Presidente <input type="text" id="presidente" required
+        /></label>
+        <label
+          >Nome do Professor <input type="text" id="professor" required
+        /></label>
+        <label
+          >Nome do responsável pelo Departamento de Ensino
+          <input type="text" id="dept-ensino" required
+        /></label>
 
-      <span class="rotulo">Data (São Paulo)</span>
-      <div class="data-linha">
-        <label>Dia <input type="number" id="dia" class="t14" min="1" max="31" required></label>
-        <label>Mês
-          <select id="mes" class="t14" required>
-            <option value="">Selecione</option>
-            <option>Janeiro</option><option>Fevereiro</option><option>Março</option>
-            <option>Abril</option><option>Maio</option><option>Junho</option>
-            <option>Julho</option><option>Agosto</option><option>Setembro</option>
-            <option>Outubro</option><option>Novembro</option><option>Dezembro</option>
-          </select>
-        </label>
-        <label>Ano <input type="number" id="ano" class="t14" min="1900" max="2100" placeholder="2026" required></label>
-      </div>
-
-      <button type="submit" class="principal">Baixar PDF</button>
-      <p id="erro" role="alert"></p>
-    </form>
-  </main>
-
-  <!-- Certificado em HTML/CSS: fica fora da tela e é convertido em PDF ao clicar em "Baixar PDF" -->
-  <div id="area-pdf" aria-hidden="true">
-    <div id="certificado" class="certificado">
-      <div class="cert-moldura">
-        <div class="cert-painel">
-          <div class="cert-fino">
-            <i class="cert-c tl"></i><i class="cert-c tr"></i><i class="cert-c bl"></i><i class="cert-c br"></i>
-          </div>
+        <span class="rotulo">Data</span>
+        <div class="data-linha">
+          <label
+            >Dia <input type="number" id="dia" min="1" max="31" required
+          /></label>
+          <label
+            >Mês
+            <select id="mes" required>
+              <option value="">Selecione</option>
+            </select></label
+          >
+          <label
+            >Ano
+            <input
+              type="number"
+              id="ano"
+              min="1900"
+              max="2100"
+              placeholder="2026"
+              required
+          /></label>
         </div>
-        <i class="cert-g tl"></i><i class="cert-g tr"></i><i class="cert-g bl"></i><i class="cert-g br"></i>
-      </div>
 
-      <img id="logo" class="cert-logo" alt="">
-      <p class="cert-inst">Centro Espírita João Silva</p>
-      <p class="cert-dept">Departamento de Ensino<br>Escola de Estudo da Doutrina Espírita</p>
-      <img id="ornamento" class="cert-orn" alt="">
-      <p class="cert-titulo">Certificado</p>
+        <button type="submit" class="principal">Baixar PDF</button>
+      </form>
+    </main>
 
-      <!-- Texto corrido: se ajusta ao conteúdo, sem caixas de tamanho fixo -->
-      <div class="cert-corpo">
-        <div class="cert-area-texto"><p id="c-texto" class="cert-texto"></p></div>
+    <!-- Certificado em HTML/CSS: fica fora da tela e é convertido em PDF ao clicar em "Baixar PDF" -->
+    <div id="area-pdf" aria-hidden="true">
+      <div id="certificado" class="certificado">
+        <div class="cert-moldura">
+          <div class="cert-painel">
+            <div class="cert-fino">
+              <i class="cert-c tl"></i><i class="cert-c tr"></i
+              ><i class="cert-c bl"></i><i class="cert-c br"></i>
+            </div>
+          </div>
+          <i class="cert-g tl"></i><i class="cert-g tr"></i
+          ><i class="cert-g bl"></i><i class="cert-g br"></i>
+        </div>
+
+        <img
+          id="logo"
+          class="cert-logo"
+          alt="Logo do Centro Espírita João Silva"
+        />
+        <p class="cert-inst">Centro Espírita João Silva</p>
+        <p class="cert-dept">
+          Departamento de Ensino<br />Escola de Estudo da Doutrina Espírita
+        </p>
+        <img id="ornamento" class="cert-orn" alt="" />
+        <p class="cert-titulo">Certificado</p>
+
+        <p id="c-texto" class="cert-texto"></p>
         <p id="c-data" class="cert-data"></p>
-      </div>
 
-      <div class="cert-assinaturas">
-        <div id="c-presidente" class="cert-nome"></div>
-        <div id="c-professor" class="cert-nome"></div>
-        <div id="c-dirigente" class="cert-nome"></div>
-        <div class="cert-cargo">Presidente</div>
-        <div class="cert-cargo">Professor(a)</div>
-        <div class="cert-cargo">Depto. de Ensino</div>
+        <div class="cert-assinaturas">
+          <div id="c-presidente" class="cert-nome"></div>
+          <div id="c-professor" class="cert-nome"></div>
+          <div id="c-dept" class="cert-nome"></div>
+          <div class="cert-cargo">Presidente</div>
+          <div class="cert-cargo">Professor(a)</div>
+          <div class="cert-cargo">Depto. de Ensino</div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Ordem importa: jsPDF → html2canvas → assets.js → script.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="assets.js"></script>
-  <script src="script.js"></script>
-</body>
+    <!-- Ordem importa: jsPDF → html2canvas → assets.js → script.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="assets.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
