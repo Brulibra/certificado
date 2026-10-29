@@ -1,7 +1,8 @@
-/* ===== Fontes locais (pasta Fonts) ===== */
+/* ===== Fontes locais (pasta assets/fonts) ===== */
 @font-face {
   font-family: "Open Sans";
-  src: url("Fonts/OpenSans-VariableFont_wdth,wght.ttf") format("truetype");
+  src: url("assets/fonts/OpenSans-VariableFont_wdth,wght.ttf")
+    format("truetype");
   font-weight: 300 800;
   font-stretch: 75% 100%;
   font-style: normal;
@@ -9,12 +10,13 @@
 }
 @font-face {
   font-family: "Abril Fatface";
-  src: url("Fonts/AbrilFatface-Regular.ttf") format("truetype");
+  src: url("assets/fonts/AbrilFatface-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: block;
 }
 
+/* ===== Página (mobile first: estilos base = celular; ajustes para telas maiores no fim) ===== */
 :root {
   --azul: #1800ad;
   --cinza: #3d3b3a;
@@ -23,70 +25,77 @@
 * {
   box-sizing: border-box;
 }
+html {
+  -webkit-text-size-adjust: 100%;
+}
 body {
   margin: 0;
-  padding: 24px 16px;
+  padding: 12px 10px;
   font-family: "Open Sans", Arial, sans-serif;
   color: var(--cinza);
   background: #fff;
 }
+
 .moldura {
   max-width: 620px;
   margin: 0 auto;
-  padding: 28px 32px 32px;
-  border: 4px solid var(--azul);
+  padding: 20px 16px 24px;
+  border: 3px solid var(--azul);
   box-shadow:
-    inset 0 0 0 7px #fff,
-    inset 0 0 0 8px var(--azul);
+    inset 0 0 0 5px #fff,
+    inset 0 0 0 6px var(--azul);
 }
 header {
   text-align: center;
   margin-bottom: 8px;
 }
 .instituicao {
+  margin: 0;
   font-family: "Abril Fatface", Georgia, serif;
-  font-weight: normal;
+  font-weight: 400;
   font-size: clamp(14pt, 5.6vw, 22pt);
   letter-spacing: 0.04em;
   text-transform: uppercase;
   text-decoration: underline;
   color: #000;
-  margin: 0;
 }
 .departamento {
+  margin: 6px 0 0;
   font-family: "Abril Fatface", Georgia, serif;
-  font-size: 8.5pt;
-  font-weight: normal;
-  letter-spacing: 0.3em;
+  font-weight: 400;
+  font-size: 7.5pt;
+  letter-spacing: 0.14em;
   line-height: 1.9;
   text-transform: uppercase;
-  margin: 6px 0 0;
 }
 h1 {
-  font-family: "Abril Fatface", Georgia, serif;
-  font-weight: normal;
-  font-size: clamp(26pt, 11vw, 42.5pt);
-  letter-spacing: 0.06em;
-  text-align: center;
   margin: 18px 0 8px;
+  text-align: center;
+  font-family: "Abril Fatface", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(26pt, 11vw, 42.5pt);
+  letter-spacing: 0.03em;
   color: #000;
 }
+
 label,
 .rotulo {
   display: block;
   margin-top: 16px;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 0.04em;
 }
 input,
 select {
   width: 100%;
+  min-width: 0;
   padding: 9px 10px;
   margin-top: 4px;
   border: 0;
   border-bottom: 1px solid var(--cinza);
   background: var(--campo);
   font: inherit;
+  font-size: 16px;
   color: #000;
 }
 input:focus,
@@ -95,24 +104,7 @@ button:focus-visible {
   outline: 2px solid var(--azul);
   outline-offset: 1px;
 }
-.linha-curso {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  margin-top: 4px;
-}
-.linha-curso input {
-  margin-top: 0;
-}
-.data-linha {
-  display: flex;
-  gap: 8px;
-}
-.data-linha label {
-  flex: 1;
-  margin-top: 4px;
-  font-weight: normal;
-}
+
 button {
   margin-top: 12px;
   padding: 10px 18px;
@@ -120,44 +112,94 @@ button {
   background: #fff;
   color: var(--azul);
   font: inherit;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
+}
+#adicionar,
+.principal {
+  width: 100%;
+}
+.principal {
+  margin-top: 24px;
+  background: var(--azul);
+  color: #fff;
+}
+
+.linha-curso {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 4px;
+}
+.linha-curso input {
+  flex: 1;
+  margin-top: 0;
 }
 .linha-curso button {
   margin: 0;
   padding: 9px 12px;
   white-space: nowrap;
 }
-button.principal {
-  background: var(--azul);
-  color: #fff;
-  margin-top: 24px;
+
+.data-linha {
+  display: flex;
+  gap: 6px;
 }
-.t14 {
-  font-size: 14pt;
+.data-linha label {
+  flex: 1;
+  min-width: 0;
+  margin-top: 4px;
+  font-weight: 400;
 }
-.t12 {
-  font-size: 12pt;
-}
-#erro {
-  color: #b00020;
-  margin: 12px 0 0;
+.data-linha label:nth-child(2) {
+  flex: 2;
 }
 
-/* ===== Certificado (reprodução do modelo SVG; medidas em pt, iguais às do modelo) ===== */
+@media (min-width: 600px) {
+  body {
+    padding: 24px 16px;
+  }
+  .moldura {
+    padding: 28px 32px 32px;
+    border-width: 4px;
+    box-shadow:
+      inset 0 0 0 7px #fff,
+      inset 0 0 0 8px var(--azul);
+  }
+  .departamento {
+    font-size: 8.5pt;
+    letter-spacing: 0.3em;
+  }
+  h1 {
+    letter-spacing: 0.06em;
+  }
+  input,
+  select {
+    font-size: 14pt;
+  }
+  #adicionar,
+  .principal {
+    width: auto;
+  }
+  .data-linha label:nth-child(2) {
+    flex: 1;
+  }
+}
+
+/* ===== Certificado (A4 paisagem; medidas em cm, conforme o modelo do Centro) ===== */
 #area-pdf {
   position: fixed;
   left: -20000px;
   top: 0;
-  width: 842.25pt;
-  height: 595.5pt;
+  width: 29.7cm;
+  height: 21cm;
   pointer-events: none;
 }
 .certificado {
   --azul: #1800ad;
   position: relative;
-  width: 842.25pt;
-  height: 595.5pt;
+  width: 29.7cm;
+  height: 21cm;
   overflow: hidden;
   background: #fff;
   font-family: "Open Sans", Arial, sans-serif;
@@ -167,10 +209,13 @@ button.principal {
   margin: 0;
 }
 
-/* Moldura: linha grossa + linha fina, com os cantos recortados em arco */
+/* Moldura (27,14 x 18,52 cm): linha grossa + linha fina, com os cantos recortados em arco */
 .cert-moldura {
   position: absolute;
-  inset: 36.5pt;
+  left: 1.28cm;
+  top: 1.24cm;
+  width: 27.14cm;
+  height: 18.52cm;
   overflow: hidden;
   background: var(--azul);
 }
@@ -224,19 +269,19 @@ button.principal {
 /* Cabeçalho */
 .cert-logo {
   position: absolute;
-  left: 134.1pt;
-  top: 59.5pt;
-  width: 107.9pt;
+  left: 4.73cm;
+  top: 2.1cm;
+  width: 3.81cm;
 }
 .cert-inst {
   position: absolute;
-  left: 316pt;
-  top: 59pt;
-  width: 390pt;
+  left: 10.67cm;
+  top: 2.1cm;
+  width: 14.3cm;
   text-align: center;
   white-space: nowrap;
   font:
-    normal 22pt/28pt "Abril Fatface",
+    400 22pt/0.94cm "Abril Fatface",
     Georgia,
     serif;
   letter-spacing: 0.06em;
@@ -246,13 +291,13 @@ button.principal {
 }
 .cert-dept {
   position: absolute;
-  left: 317pt;
-  top: 87.3pt;
-  width: 390pt;
+  left: 10.67cm;
+  top: 3.08cm;
+  width: 14.3cm;
   text-align: center;
   white-space: nowrap;
   font:
-    normal 8.5pt/14.8pt "Abril Fatface",
+    400 8.5pt/0.52cm "Abril Fatface",
     Georgia,
     serif;
   letter-spacing: 0.45em;
@@ -262,41 +307,25 @@ button.principal {
 }
 .cert-orn {
   position: absolute;
-  left: 346pt;
-  top: 148.8pt;
-  width: 140pt;
+  left: 12.21cm;
+  top: 5.25cm;
+  width: 4.94cm;
 }
 .cert-titulo {
   position: absolute;
-  left: 0;
-  top: 198pt;
-  width: 842.25pt;
+  left: 8.92cm;
+  top: 6.76cm;
+  width: 11.86cm;
   text-align: center;
   font:
-    normal 42.5pt/50pt "Abril Fatface",
+    400 42.5pt/1.78cm "Abril Fatface",
     Georgia,
     serif;
   letter-spacing: 0.04em;
   color: #000;
 }
 
-/* Texto do certificado: texto corrido que se ajusta ao conteúdo */
-.cert-corpo {
-  position: absolute;
-  left: 185.5pt;
-  top: 258pt;
-  width: 470.5pt;
-  height: 182pt;
-  display: flex;
-  flex-direction: column;
-}
-.cert-area-texto {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  align-items: center;
-  padding-bottom: 8pt;
-}
+/* Texto do aluno e data (Open Sans 14): texto corrido, centralizado; 0,7 cm entre as linhas */
 .cert-texto,
 .cert-data {
   font-size: 14pt;
@@ -304,83 +333,49 @@ button.principal {
   letter-spacing: 0.04em;
 }
 .cert-texto {
-  line-height: 2.5714em;
-  text-align: left;
+  position: absolute;
+  left: 6.55cm;
+  top: 9.71cm;
+  width: 16.61cm;
+  height: 3.14cm;
+  padding-top: 0.5cm;
+  text-align: center;
+  line-height: 2.417;
   overflow-wrap: anywhere;
 }
 .cert-data {
-  line-height: 17pt;
+  position: absolute;
+  left: 9.17cm;
+  top: 14.9cm;
+  width: 11.36cm;
+  height: 0.59cm;
+  line-height: 0.59cm;
   text-align: center;
+  white-space: nowrap;
 }
 
-/* Assinaturas: nomes e cargos alinhados em colunas; o nome pode quebrar em duas linhas */
+/* Assinaturas (Open Sans 10): três colunas de 5,54 cm, separadas por 1,8 cm; o nome pode quebrar em duas linhas */
 .cert-assinaturas {
   position: absolute;
-  left: 134.1pt;
-  top: 484.2pt;
-  width: 573.4pt;
+  left: 4.73cm;
+  top: 17.1cm;
+  width: 20.22cm;
   display: grid;
-  grid-template-columns: repeat(3, 157pt);
-  justify-content: space-between;
+  grid-template-columns: repeat(3, 5.54cm);
+  column-gap: 1.8cm;
   text-align: center;
 }
 .cert-nome {
   border-top: 1pt solid #000;
-  padding-top: 8.4pt;
-  font-size: 12pt;
-  line-height: 14pt;
+  padding: 0.29cm 0 0 0.15em;
+  font-size: 10pt;
+  line-height: 0.5cm;
+  letter-spacing: 0.15em;
   overflow-wrap: anywhere;
 }
 .cert-cargo {
-  font-size: 10pt;
-  line-height: 14pt;
-  letter-spacing: 0.22em;
   padding-left: 0.22em;
-}
-
-/* ===== Responsividade da página (o certificado tem medidas fixas e não é afetado) ===== */
-html {
-  -webkit-text-size-adjust: 100%;
-}
-input,
-select {
-  min-width: 0;
-}
-.data-linha label {
-  min-width: 0;
-}
-
-@media (max-width: 600px) {
-  body {
-    padding: 12px 10px;
-  }
-  .moldura {
-    padding: 20px 16px 24px;
-    border-width: 3px;
-    box-shadow:
-      inset 0 0 0 5px #fff,
-      inset 0 0 0 6px var(--azul);
-  }
-  .departamento {
-    font-size: 7.5pt;
-    letter-spacing: 0.14em;
-  }
-  h1 {
-    letter-spacing: 0.03em;
-  }
-  .t14,
-  .t12 {
-    font-size: 16px;
-  }
-  .data-linha {
-    gap: 6px;
-  }
-  .data-linha label:nth-child(2) {
-    flex: 2;
-  }
-  #adicionar,
-  button.principal {
-    width: 100%;
-    margin-right: 0;
-  }
+  font-size: 10pt;
+  line-height: 0.5cm;
+  letter-spacing: 0.22em;
 }
