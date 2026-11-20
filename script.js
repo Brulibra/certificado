@@ -191,6 +191,21 @@ function dicaDoErro(falha) {
   return falha.message;
 }
 
+// Monta o nome do arquivo a partir do nome do aluno.
+// Ex.: "João da Silva" -> "certificado-joao-da-silva.pdf"
+function montarNomeArquivo(aluno) {
+  const nomeLimpo = aluno
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // remove acentos
+    .replace(/[^a-z0-9\s-]/g, "") // remove caracteres inválidos
+    .replace(/\s+/g, "-") // espaços viram hífen
+    .replace(/-+/g, "-") // evita hífens repetidos
+    .replace(/^-|-$/g, ""); // tira hífen no começo e no fim
+  return nomeLimpo ? `certificado-${nomeLimpo}.pdf` : "certificado.pdf";
+}
+
 formulario.addEventListener("submit", async (evento) => {
   evento.preventDefault();
 
@@ -240,7 +255,7 @@ formulario.addEventListener("submit", async (evento) => {
       undefined,
       "FAST",
     );
-    pdf.save("certificado.pdf");
+    pdf.save(montarNomeArquivo(nomeAluno));
     limparFormulario();
   } catch (falha) {
     console.error(falha);
